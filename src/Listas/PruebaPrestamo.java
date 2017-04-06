@@ -34,7 +34,7 @@ public class PruebaPrestamo {
             System.out.println("Para dar de alta un libro pulse 1");
             System.out.println("Para dar de baixa un libro pulse 2");
             System.out.println("Para modificar un libro pulse 3");
-            System.out.println("Para listar los libros por numero de pag pulse 4");
+            System.out.println("Para listar los libros orden pulse 4");
             System.out.println("Para listar libros segun autor pulse 5");
             System.out.println("Para finalizar la operacion pulse 6");
             menu=sc.nextInt();
@@ -65,6 +65,7 @@ public class PruebaPrestamo {
                 case 3:
                     System.out.println("Introduzca el ISBN del libro que desea eliminar");
                     ISBN=sc.nextInt();
+                    sc.nextLine();
                     for(int i=0;i<libros.size();i++){
                         if(ISBN==(libros.get(i).getISBN())){
                           Prestamo mod=new Prestamo();
@@ -74,10 +75,19 @@ public class PruebaPrestamo {
                           mod.setAutor(autor=sc.nextLine());
                           System.out.println("Introduzca el nuevo numero de palabras");
                           mod.setPaxinas(paxinas=sc.nextInt());
+                          sc.nextLine();
                         }
                     }
                         break;
                 case 4:
+                    int n=0;
+                    System.out.println("Por qué patrón quiere ordenar?");
+                    System.out.println("Por nº paginas selecione 1");
+                    System.out.println("Por titulo seleccione 2");
+                    System.out.println("Por autor seleccione 3");
+                    Prestamo ordena=new Prestamo(ISBN,titulo,autor,paxinas);
+                    ordena.setOrden(n=sc.nextInt());
+                    sc.nextLine();
                     Collections.sort(libros);
                     for(int i=0;i<libros.size();i++){
                         System.out.println(libros.get(i).getTitulo());

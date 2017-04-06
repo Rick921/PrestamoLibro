@@ -14,6 +14,7 @@ public class Prestamo implements Comparable<Prestamo>{
     private String titulo;
     private String autor;
     private int paxinas;
+    static int orden=0;
     
     public Prestamo (){
         
@@ -77,17 +78,54 @@ public class Prestamo implements Comparable<Prestamo>{
     /**
      * @param paxinas the paxinas to set
      */
+    
+    public void setOrden (int n){
+        this.orden=n;
+    }
+    
+    public int getOrden (){
+        return orden;
+    }
     public void setPaxinas(int paxinas) {
         this.paxinas = paxinas;
     }
     
-      public int compareTo(Prestamo p1) {
-        if (this.getPaxinas()<p1.getPaxinas())
-    return -1;
-        else if (this.getPaxinas()> p1.getPaxinas())
-    return 1;
-        else
-    return 0;
- }
-    
+    public int compareTo(Prestamo p1) {
+    int cifra=0;
+    if(this.orden==1){
+        if (this.getPaxinas()<p1.getPaxinas()){
+    cifra= -1;
+        }
+        else if (this.getPaxinas()> p1.getPaxinas()){
+    cifra= 1;
+        }
+        else{
+    cifra= 0;
+        }
+    }
+    if(this.orden==2){
+        if (this.getTitulo().compareTo(p1.getTitulo())<0){
+    cifra= -1;
+        }
+        else if (this.getTitulo().compareTo(p1.getTitulo())>0){
+    cifra= 1;
+        }
+        else{
+    cifra= 0;
+        }
+    }
+    if(this.orden==3){
+            if (this.getAutor().compareTo(p1.getAutor())<0){
+    cifra= -1;
+        }
+        else if (this.getAutor().compareTo(p1.getAutor())>0){
+    cifra= 1;
+        }
+        else{
+    cifra= 0;
+        }
+    }
+    return cifra;
+ 
+}
 }
